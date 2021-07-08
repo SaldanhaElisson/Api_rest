@@ -28,7 +28,7 @@ export default class User extends Model {
           },
         },
       },
-      password_rash: {
+      password_hash: {
         type: Sequelize.STRING,
         defaultValue: '',
       },
@@ -50,7 +50,7 @@ export default class User extends Model {
       sequelize,
     });
     this.addHook('beforeSave', async (user) => {
-      user.password_rash = await bcryptjs.hash(user.password, 8);
+      user.password_hash = await bcryptjs.hash(user.password, 8);
       // na linha 53 estou transformano o password em hash e jogando dentro do campo passowrd_rash
       // no segundo paremetero dentro de .hash estou definindo  o tamanho do rash
     });
