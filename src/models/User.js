@@ -50,13 +50,20 @@ export default class User extends Model {
       sequelize,
     });
     this.addHook('beforeSave', async (user) => {
-      user.password_hash = await bcryptjs.hash(user.password, 8);
+      if (user.password) {
+        user.password_hash = await bcryptjs.hash(user.password, 8);
       // na linha 53 estou transformano o password em hash e jogando dentro do campo passowrd_rash
       // no segundo paremetero dentro de .hash estou definindo  o tamanho do rash
+      }
     });
     // addHook -> adiciona/faz  uma ação, no primeiro parametro eu digo quando ele faz a ação
     // nesse caso estamos dizendo que el e vai fzr a função( transformar password em hash)
     // ante de salvar 'beforeSave'
     return this;
   }
+
+  passwordIsvalid(password) {
+    return bcryptjs.compare(password, this.password_hash);
+  }
+  // tranformando a senha em hash e verificando
 }
