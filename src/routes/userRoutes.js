@@ -1,13 +1,17 @@
 import { Router } from 'express';
 import userController from '../controllers/UserControllers';
 
+import loginRequire from '../middlewares/loginRequired';
+
 const router = new Router();
 
-router.post('/', userController.store);
+// index e nem show não deveria existi em um projeto eal
 router.get('/', userController.index);
 router.get('/:id', userController.show);
-router.put('/:id', userController.update);
-router.delete('/:id', userController.delete);
+
+router.post('/', userController.store);
+router.put('/', loginRequire, userController.update);
+router.delete('/', loginRequire, userController.delete);
 
 export default router;
 

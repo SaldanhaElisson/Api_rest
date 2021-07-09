@@ -25,6 +25,8 @@ class TokenController {
     }
     // passando o token
     const { id } = user;
+
+    // criando o token a partir do id e o email
     // eslint-disable-next-line max-len
     const token = jwt.sign({ id, email }, process.env.TOKEN_SECRET, { expiresIn: process.env.TOKEN_EXPIRATION });
     return res.json({ token });
