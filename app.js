@@ -1,4 +1,5 @@
 import dotenv from 'dotenv';
+import { resolve } from 'path';
 
 dotenv.config(); // configurar o dotenv
 
@@ -22,6 +23,7 @@ class App {
     this.app.use(express.urlencoded({ extended: true }));
     // configurando para trabalhar com o middlewares
     this.app.use(express.json()); // configurando para trabalhar  com json
+    this.app.use(express.static(resolve(__dirname, 'uploads')));
   }
 
   routes() {

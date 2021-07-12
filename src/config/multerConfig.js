@@ -13,7 +13,7 @@ export default {
   // definindo a pasta pra onde vai o arquivo
   storage: multer.diskStorage({
     destination: (req, file, cb) => {
-      cb(null, resolve(__dirname, '..', '..', 'uploads'));
+      cb(null, resolve(__dirname, '..', '..', 'uploads', 'images'));
     },
     // ajeitando o nome do arquivo
     filename: (req, file, cb) => {
