@@ -15,7 +15,7 @@ class UserController {
   // Index
   async index(req, res) {
     try {
-      // atribues estou dinzendo quais atribos quero enviar
+      // atribues estou dizendo quais atribos quero enviar
       const users = await User.findAll({ atributes: ['id', 'nome', 'email'] });
       return res.json(users);
     } catch (e) {

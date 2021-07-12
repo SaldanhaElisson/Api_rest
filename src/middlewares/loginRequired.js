@@ -11,8 +11,8 @@ export default async (req, res, next) => {
     });
   }
 
-  const [, , token] = authorization.split(' ');
-
+  const [, token] = authorization.split(' ');
+  console.log(token);
   // FAZENDO A VERIFICAÇÃO DO TOKEN
   try {
     const dados = jwt.verify(token, process.env.TOKEN_SECRET);
